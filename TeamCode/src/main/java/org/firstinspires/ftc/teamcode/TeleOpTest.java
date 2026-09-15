@@ -22,12 +22,16 @@ public class TeleOpTest extends LinearOpMode {
 
     private void initialize() {
         telemetry.addLine("Initializing...");
+        Actions.assignActions(inputHandler);
         telemetry.update();
     }
 
     private void update() {
         telemetry.addLine("Updating...");
         inputHandler.update(gamepad1, gamepad2);
+        if (inputHandler.actionHappened("Test Action")) {
+            telemetry.addLine("Action Happened!");
+        }
         telemetry.update();
     }
 
