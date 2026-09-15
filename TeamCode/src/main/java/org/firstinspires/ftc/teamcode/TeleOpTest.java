@@ -1,11 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
+import java.util.ArrayList;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.subsystems.ExampleSubsystem;
 
 @TeleOp(name = "TeleOp", group = "Linear OpMode")
 public class TeleOpTest extends LinearOpMode {
     private InputHandler inputHandler = new InputHandler(telemetry);
+    private SubsystemManager subsystemManager;
 
     @Override
     public void runOpMode() {
@@ -21,6 +25,11 @@ public class TeleOpTest extends LinearOpMode {
     }
 
     private void initialize() {
+        ArrayList<Subsystem> subs = new ArrayList<>();
+        subs.add(new ExampleSubsystem());
+        subsystemManager = new SubsystemManager(subs, telemetry);
+        subsystemManager.initSubsystems();
+
         telemetry.addLine("Initializing...");
         Actions.assignActions(inputHandler);
         telemetry.update();
@@ -33,10 +42,14 @@ public class TeleOpTest extends LinearOpMode {
             telemetry.addLine("Action Happened!");
         }
         telemetry.update();
+
+        subsystemManager.updateSubsystems();
     }
 
     private void end() {
         telemetry.addLine("Ending...");
         telemetry.update();
+
+        subsystemManager.terminateSubsystems();
     }
 }
