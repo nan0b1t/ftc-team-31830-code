@@ -8,8 +8,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public interface Subsystem {
     String getName();
 
-    void init(Telemetry telemetry);
-    void update(Telemetry telemetry);
-    void terminate(Telemetry telemetry);
+    void init(Telemetry telemetry, Robot robot, InputHandler iHandler);
+    void update(Telemetry telemetry, Robot robot, InputHandler iHandler);
+    void terminate(Telemetry telemetry, Robot robot, InputHandler iHandler);
 }
 

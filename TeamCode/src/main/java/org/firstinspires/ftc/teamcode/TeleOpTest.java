@@ -10,6 +10,7 @@ import org.firstinspires.ftc.teamcode.subsystems.ExampleSubsystem;
 public class TeleOpTest extends LinearOpMode {
     private InputHandler inputHandler = new InputHandler(telemetry);
     private SubsystemManager subsystemManager;
+    private Robot robot = new Robot(hardwareMap);
 
     @Override
     public void runOpMode() {
@@ -27,7 +28,7 @@ public class TeleOpTest extends LinearOpMode {
     private void initialize() {
         ArrayList<Subsystem> subs = new ArrayList<>();
         subs.add(new ExampleSubsystem());
-        subsystemManager = new SubsystemManager(subs, telemetry);
+        subsystemManager = new SubsystemManager(subs, telemetry, inputHandler, robot);
         subsystemManager.initSubsystems();
 
         telemetry.addLine("Initializing...");
