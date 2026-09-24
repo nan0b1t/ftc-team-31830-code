@@ -51,6 +51,7 @@ public class InputHandler {
                     if (wasButtonReleased(res.input, res.gamepad)) {
                         return true;
                     }
+                    break;
                 default:
                     return false;
             }
