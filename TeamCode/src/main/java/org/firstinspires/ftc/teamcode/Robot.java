@@ -10,7 +10,7 @@ public class Robot {
      }
 
      public void startMotor() {
-        hardware.leftFrontDrive.setPower(100);
+        hardware.leftFrontDrive.setPower(1);
      }
 
      public void endMotor() {
