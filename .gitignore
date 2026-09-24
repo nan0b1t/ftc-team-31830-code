@@ -84,3 +84,8 @@ lint/tmp/
 .project
 .classpath
 .settings/
+
+# Eclipse / Buildship Gradle integration files
+.settings/
+.project
+.classpath
