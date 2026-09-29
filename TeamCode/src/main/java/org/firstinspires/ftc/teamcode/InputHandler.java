@@ -79,6 +79,23 @@ public class InputHandler {
         TWO
     }
 
+    public DriveValues getDriveValues(GamepadNum g) {
+        Gamepad locGamePad = (g == GamepadNum.ONE) ? currentGamePad1 : currentGamePad2;
+
+        DriveValues res = new DriveValues();
+
+        double y = -locGamePad.left_stick_y;
+        double x = locGamePad.left_stick_x;
+        double rx = locGamePad.right_stick_x;
+
+        res.FL = y + x + rx;
+        res.BL = y - x + rx;
+        res.FR = y - x - rx;
+        res.BR = y + x - rx;
+
+        return res;
+    }
+
     private boolean isButtonPressed(Button b, GamepadNum g) {
         Gamepad locGamePad = (g == GamepadNum.ONE) ? currentGamePad1 : currentGamePad2;
 
