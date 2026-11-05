@@ -8,12 +8,15 @@ import org.firstinspires.ftc.teamcode.subsystems.ExampleSubsystem;
 
 @TeleOp(name = "TeleOp", group = "Linear OpMode")
 public class TeleOpTest extends LinearOpMode {
-    private InputHandler inputHandler = new InputHandler(telemetry);
+    private InputHandler inputHandler;
     private SubsystemManager subsystemManager;
-    private Robot robot = new Robot(hardwareMap);
+    private Robot robot;
 
     @Override
     public void runOpMode() {
+        inputHandler = new InputHandler(telemetry);
+        robot = new Robot(hardwareMap);
+
         initialize();
 
         waitForStart();
