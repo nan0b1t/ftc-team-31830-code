@@ -22,4 +22,27 @@ public class Robot {
          hardware.leftDriveBack.setPower(0);
          hardware.rightDriveBack.setPower(0);
      }
+
+     public void runIntake() {
+        hardware.intake.setPower(1);
+        hardware.rightIntakeServo.setPower(1);
+        hardware.leftIntakeServo.setPower(1);
+        hardware.windmillServo.setPower(1.0);
+     }
+
+     public void stopIntake() {
+        hardware.intake.setPower(0);
+        hardware.rightIntakeServo.setPower(0);
+        hardware.leftIntakeServo.setPower(0);
+        hardware.windmillServo.setPower(0.0);
+     }
+
+     public void revLauncher() {
+         hardware.launcher.setVelocity(1125);
+     }
+
+     public void stopLauncher() {
+         hardware.launcher.setVelocity(0);
+     }
+
 }

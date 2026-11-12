@@ -55,6 +55,7 @@ public class InputHandler {
                 default:
                     return false;
             }
+            return false;
         }
 
         telemetry.addLine("ERROR: ATTEMPTED TO ACCESS A NONEXISTENT ACTION");

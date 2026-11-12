@@ -8,22 +8,19 @@ import org.firstinspires.ftc.teamcode.InputHandler;
 
 public class ExampleSubsystem implements Subsystem {
     public String getName() {
-        return "Example Subsystem";
+        return "Drive System";
     }
 
     public void init(Telemetry telemetry, Robot robot, InputHandler iHandler) {
-        telemetry.addLine("Initalizing example subsystem...");
+        telemetry.addLine("Initalizing drive subsystem...");
     }
 
     public void update(Telemetry telemetry, Robot robot, InputHandler iHandler) {
-        if (iHandler.actionHappened("Test Action")) {
-            robot.runDriveTrain(iHandler.getDriveValues(InputHandler.GamepadNum.ONE));
-        }
-
+        robot.runDriveTrain(iHandler.getDriveValues(InputHandler.GamepadNum.ONE));
     }
 
     public void terminate(Telemetry telemetry, Robot robot, InputHandler iHandler) {
-        telemetry.addLine("Terminating example subsystem...");
+        telemetry.addLine("Terminating drive system...");
         robot.endDriveTrain();
     }
 }

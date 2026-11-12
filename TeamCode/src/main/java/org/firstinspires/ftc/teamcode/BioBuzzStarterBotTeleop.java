@@ -16,9 +16,7 @@
  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *   SOFTWARE.
- */
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 
 
 package org.firstinspires.ftc.teamcode;
@@ -51,7 +49,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 @TeleOp(name = "BioBuzz StarterBot Teleop", group = "StarterBot")
 //@Disabled
-public class BioBuzzStarterbotTeleop extends OpMode {
+public class BioBuzzStarterBotTeleop extends OpMode {
 
     // Declare OpMode members.
     private DcMotor leftDrive = null;
@@ -72,8 +70,8 @@ public class BioBuzzStarterbotTeleop extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250;
-    public final int LAUNCHER_MIN_VELOCITY = 1200;
+    public final int LAUNCHER_TARGET_VELOCITY = -1250;
+    public final int LAUNCHER_MIN_VELOCITY = -1200;
 
     /*
      * These two variables store the power we need to apply to the motors. In other cases, we may
@@ -114,6 +112,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          */
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        // launcher.setDirection(DcMotor.Direction.REVERSE);
 
         /*
          * Setting zeroPowerBehavior to BRAKE enables a "brake mode". This causes the motor to
@@ -264,7 +263,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * add some power to the intake power. This can sometimes help dislodge stuck elements from
          * inside the hopper.
          */
-        if (gamepad1.right_bumper && launcher.getVelocity() > LAUNCHER_MIN_VELOCITY) {
+        if (gamepad1.right_bumper && launcher.getVelocity() < LAUNCHER_MIN_VELOCITY) {
             windmillServo.setPower(1);
             intakePower += 0.5;
         } else {
