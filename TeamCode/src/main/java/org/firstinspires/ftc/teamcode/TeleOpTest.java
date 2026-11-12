@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.subsystems.ExampleSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.LaunchSubsystem;
 
 @TeleOp(name = "TeleOp", group = "Linear OpMode")
 public class TeleOpTest extends LinearOpMode {
@@ -31,6 +33,8 @@ public class TeleOpTest extends LinearOpMode {
     private void initialize() {
         ArrayList<Subsystem> subs = new ArrayList<>();
         subs.add(new ExampleSubsystem());
+        subs.add(new IntakeSubsystem());
+        subs.add(new LaunchSubsystem());
         subsystemManager = new SubsystemManager(subs, telemetry, inputHandler, robot);
         subsystemManager.initSubsystems();
 
