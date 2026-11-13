@@ -37,6 +37,9 @@ public class RobotHardware {
         rightDriveBack.setZeroPowerBehavior(BRAKE);
         intake.setZeroPowerBehavior(BRAKE);
 
+        rightDriveBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftDriveBack.setDirection(DcMotorSimple.Direction.REVERSE);
+
         launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40, 0, 0, 12.5));
 
         leftIntakeServo.setPower(0);
