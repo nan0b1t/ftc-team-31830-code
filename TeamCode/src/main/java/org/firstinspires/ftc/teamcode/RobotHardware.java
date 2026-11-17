@@ -7,6 +7,9 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 public class RobotHardware {
     public DcMotor leftDriveFront = null;
@@ -18,6 +21,7 @@ public class RobotHardware {
     public CRServo leftIntakeServo = null;
     public CRServo rightIntakeServo = null;
     public CRServo windmillServo = null;
+    public IMU imu = null;
 
     public RobotHardware(HardwareMap hardwareMap) {
         leftDriveFront = hardwareMap.get(DcMotor.class, "left_drive_front");
@@ -30,6 +34,18 @@ public class RobotHardware {
         leftIntakeServo = hardwareMap.get(CRServo.class, "left_intake_servo");
         rightIntakeServo = hardwareMap.get(CRServo.class, "right_intake_servo");
 
+        imu = hardwareMap.get(IMU.class, "imu");
+
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection =
+            RevHubOrientationOnRobot.LogoFacingDirection.RIGHT;
+        RevHubOrientationOnRobot.UsbFacingDirection usbDirection =
+            RevHubOrientationOnRobot.UsbFacingDirection.UP;
+
+        RevHubOrientationOnRobot orientationOnRobot =
+            new RevHubOrientationOnRobot(logoDirection, usbDirection);
+
+        imu.initialize(new IMU.Parameters(orientationOnRobot));
+        imu.resetYaw();
 
         leftDriveFront.setZeroPowerBehavior(BRAKE);
         leftDriveBack.setZeroPowerBehavior(BRAKE);
@@ -40,6 +56,7 @@ public class RobotHardware {
         rightDriveBack.setDirection(DcMotorSimple.Direction.REVERSE);
         leftDriveBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40, 0, 0, 12.5));
 
         leftIntakeServo.setPower(0);
