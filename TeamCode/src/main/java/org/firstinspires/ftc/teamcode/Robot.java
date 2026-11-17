@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class Robot {
      RobotHardware hardware;
@@ -37,12 +38,30 @@ public class Robot {
         hardware.windmillServo.setPower(0.0);
      }
 
-     public void revLauncher() {
-         hardware.launcher.setVelocity(1125);
+     public void revLauncher(double velocity) {
+        hardware.launcher.setVelocity(velocity);
+     }
+
+     public void startWindmill() {
+         hardware.windmillServo.setPower(-1.0);
+     }
+
+     public void stopWindmill() {
+         hardware.windmillServo.setPower(0.0);
      }
 
      public void stopLauncher() {
-         hardware.launcher.setVelocity(0);
+        hardware.launcher.setVelocity(0);
+        hardware.windmillServo.setPower(0.0);
      }
 
+     public double getLauncherVelocity() {
+        return hardware.launcher.getVelocity();
+     }
+
+     public double getRotationDegrees() {
+        return hardware.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+     }
+
+     public void setTargetRotation(Integer i) {}
 }
