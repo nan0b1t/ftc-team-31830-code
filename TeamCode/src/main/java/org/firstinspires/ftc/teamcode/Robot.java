@@ -26,14 +26,16 @@ public class Robot {
 
      public void runIntake() {
         hardware.intake.setPower(1);
-        hardware.rightIntakeServo.setPower(-1);
-        hardware.leftIntakeServo.setPower(-1);
+        hardware.rightIntakeServo.setPower(1);
+        hardware.leftIntakeServo.setPower(1);
+        hardware.windmillServo.setPower(1.0);
      }
 
      public void stopIntake() {
         hardware.intake.setPower(0);
         hardware.rightIntakeServo.setPower(0);
         hardware.leftIntakeServo.setPower(0);
+        hardware.windmillServo.setPower(0.0);
      }
 
      public void revLauncher(double velocity) {
